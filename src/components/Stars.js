@@ -1,9 +1,33 @@
-import React from 'react'
-import styled from 'styled-components'
-import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
+import React from "react";
+import styled from "styled-components";
+import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import { useProductsContext } from "../context/products_context";
 const Stars = () => {
-  return <h4>stars</h4>
-}
+  const { single_product: product } = useProductsContext();
+  const { stars, reviews } = product;
+
+  return (
+    <Wrapper>
+      <div className="stars">
+        {/* Create an array and check conditionally */}
+        {Array.from({ length: 5 }).map((_, index) => {
+          return (
+            <span key={index}>
+              {stars >= index + 1 ? (
+                <BsStarFill />
+              ) : stars >= index + 0.5 ? (
+                <BsStarHalf />
+              ) : (
+                <BsStar />
+              )}
+            </span>
+          );
+        })}
+      </div>
+      <p className="reviews">({reviews} customer reviews)</p>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,5 +42,5 @@ const Wrapper = styled.div`
     margin-bottom: 0;
   }
   margin-bottom: 0.5rem;
-`
-export default Stars
+`;
+export default Stars;

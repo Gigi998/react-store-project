@@ -61,7 +61,7 @@ export const ProductsProvider = ({ children }) => {
       const singleProduct = response.data;
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
     } catch (error) {
-      dispatch({ tyoe: GET_SINGLE_PRODUCT_ERROR });
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
   };
 

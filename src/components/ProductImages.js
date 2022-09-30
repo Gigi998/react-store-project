@@ -1,9 +1,30 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from "react";
+import { FaMapPin } from "react-icons/fa";
+import styled from "styled-components";
+//Images prop is undefined so the url property was set
+const ProductImages = ({ images = [{ url: "" }] }) => {
+  //Index state
+  const [index, setIndex] = useState(0);
 
-const ProductImages = () => {
-  return <h4>product images</h4>
-}
+  return (
+    <Wrapper>
+      <img src={images[index].url} alt="img" className="main" />
+      <div className="gallery">
+        {images.map((image, index) => {
+          return (
+            <img
+              src={image.url}
+              key={index}
+              onClick={() => setIndex(index)}
+              alt={image.filename}
+              className={`${image.url === FaMapPin.url ? "active" : null}`}
+            />
+          );
+        })}
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   .main {
@@ -48,6 +69,6 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default ProductImages
+export default ProductImages;
