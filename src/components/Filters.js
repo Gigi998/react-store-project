@@ -5,9 +5,66 @@ import { getUniqueValues, formatPrice } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 
 const Filters = () => {
-  const { all_products } = useFilterContext();
+  const {
+    filters: {
+      text,
+      category,
+      company,
+      color,
+      min_price,
+      price,
+      max_price,
+      shipping,
+    },
+    updateFilters,
+    clearFilters,
+    all_products,
+  } = useFilterContext();
 
-  return <h4>filters</h4>;
+  const categories = getUniqueValues(all_products, "category");
+  const companies = getUniqueValues(all_products, "company");
+  const colors = getUniqueValues(all_products, "colors");
+
+  return (
+    <Wrapper>
+      <div className="content">
+        <form onSubmit={(e) => e.preventDefault()}>
+          {/* search input */}
+          <div className="form-control">
+            <input
+              type="text"
+              name="text"
+              placeholder="search"
+              className="search-input"
+              value={text}
+              onChange={updateFilters}
+            />
+          </div>
+          {/* categories */}
+          <div className="form-control">
+            <h5>category</h5>
+            <div>
+              {categories.map((cat, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={updateFilters}
+                    type="button"
+                    name="category"
+                    className={`${
+                      category === cat.toLowerCase() ? "active" : null
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </form>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
@@ -23,6 +80,7 @@ const Wrapper = styled.section`
     border-radius: var(--radius);
     border-color: transparent;
     letter-spacing: var(--spacing);
+    width: 15vw;
   }
   .search-input::placeholder {
     text-transform: capitalize;
