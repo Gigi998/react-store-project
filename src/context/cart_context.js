@@ -51,6 +51,7 @@ export const CartProvider = ({ children }) => {
   //Local storage setup every time cart changes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
+    dispatch({ type: COUNT_CART_TOTALS });
   }, [state.cart]);
 
   return (
