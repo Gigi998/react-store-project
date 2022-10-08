@@ -30,6 +30,7 @@ const filter_reducer = (state, action) => {
   if (action.type === UPDATE_SORT) {
     return { ...state, sort: action.payload };
   }
+  // SORT PRODUCTS LOGIC
   if (action.type === SORT_PRODUCTS) {
     const { sort, filtered_products } = state;
     let sortedProducts = [];
