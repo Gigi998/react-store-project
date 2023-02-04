@@ -1,22 +1,18 @@
-## Notes
+# Store project
 
-#### Older React Version
+Project in Action - [Store project](https://storeprojectreact.netlify.app/)
 
-```
-"react": "^16.13.1",
-"react-dom": "^16.13.1",
-"react-scripts": "3.4.3",
-```
+## Start App Locally
 
-#### Current React Version
-
-```
-"react": "^17.0.1",
-"react-dom": "^17.0.1",
-"react-scripts": "4.0.0",
+```sh
+npm run install && npm start
 ```
 
-#### Alternative fix
+## Project from Udemy React Course
 
-.env file in the root
-FAST_REFRESH=FALSE
+[React Course](https://www.udemy.com/course/react-tutorial-and-projects-course/?referralCode=FEE6A921AF07E2563CEF)
+
+### Techologies
+
+- State => useReducer
+- Styling => Styled components
